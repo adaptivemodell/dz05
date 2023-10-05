@@ -1,9 +1,10 @@
 import os
 
-from selene import browser
+from selene import browser, be, have
+
 
 def test_complete_todo():
-    browser.open('/') # Открываем страницу
+    browser.open('/automation-practice-form') # Открываем страницу
     browser.element('[placeholder="First Name"]').type('Bob')
     browser.element('#lastName').type('Dylan')
     browser.element('#userEmail').type('test@mail.com')
@@ -20,6 +21,19 @@ def test_complete_todo():
     browser.element('#react-select-3-input').type('NCR').click().press_enter()
     browser.element('#react-select-4-input').type('Delhi').click().press_enter()
     browser.element('#submit').press_enter()
+
+    browser.all('[class="table-responsive"]').should(have.texts(
+        'Bob Dylan',
+        'test@mail.com',
+        'Male',
+        '8800112299',
+        '26 January,1990',
+        'English',
+        'Sports',
+        '001.jpg',
+        'hawaii',
+        'NCR Delhi'
+    ))
 
 
 
