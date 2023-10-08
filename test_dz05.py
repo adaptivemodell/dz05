@@ -22,7 +22,7 @@ def test_complete_todo():
     browser.element('#react-select-4-input').type('Delhi').click().press_enter()
     browser.element('#submit').press_enter()
 
-    browser.all('[class="table-responsive"]').should(have.texts(
+    browser.all("tbody tr td:last-child").should(have.texts(
         'Bob Dylan',
         'test@mail.com',
         'Male',
